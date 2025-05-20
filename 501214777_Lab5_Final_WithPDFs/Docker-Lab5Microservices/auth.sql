@@ -1,0 +1,2 @@
+-- SQL init for auth_LBS
+CREATE DATABASE IF NOT EXISTS auth_LBS;

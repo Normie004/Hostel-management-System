@@ -1,0 +1,19 @@
+TeamMember1Name_TeamMember2Name_Lab5_exc2
+
+Exercise 2: Docker Build and Push
+
+1. Built Docker Images:
+- yourdockerhub/booking
+- yourdockerhub/room
+- yourdockerhub/auth
+- yourdockerhub/frontend
+- yourdockerhub/bookingdb
+- yourdockerhub/roomdb
+- yourdockerhub/authdb
+- yourdockerhub/frontenddb
+
+2. Screenshot of Docker Images:
+[Insert: docker image ls]
+
+3. Screenshot of Pushed Images:
+[Insert: Docker Hub repository page with image tags]

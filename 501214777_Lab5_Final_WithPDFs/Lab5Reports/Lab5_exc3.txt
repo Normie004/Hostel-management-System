@@ -1,0 +1,12 @@
+TeamMember1Name_TeamMember2Name_Lab5_exc3
+
+Exercise 3: Kubernetes Deployment
+
+1. Screenshot of Pods:
+[Insert: kubectl get pods]
+
+2. Screenshot of Services:
+[Insert: kubectl get services]
+
+3. Screenshot of Running Website:
+[Insert: Screenshot of frontend accessed via EXTERNAL-IP]

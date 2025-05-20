@@ -1,0 +1,19 @@
+TeamMember1Name_TeamMember2Name_Lab5_exc1
+
+Exercise 1: Messaging System Description
+
+1. Dependent Microservices:
+The BookingService needs to notify the RoomService whenever a room is booked.
+The communication is done asynchronously using KubeMQ on a channel named `room_update_channel`.
+
+2. Database Description:
+- BookingService uses booking_LBS database to store bookings.
+- RoomService uses room_LBS to manage room availability.
+
+3. Messaging Code (BookingService):
+- Messaging.java (publishes to KubeMQ)
+- BookingResource.java (calls sendMessage after booking)
+
+4. Messaging Code (RoomService):
+- RoomUpdateListener.java (subscribes to KubeMQ)
+- AppContextListener.java (auto-starts RoomUpdateListener on deploy)

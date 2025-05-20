@@ -1,0 +1,113 @@
+
+version: '3.8'
+
+services:
+
+  booking-db:
+    image: mysql:5.7
+    container_name: booking-db
+    environment:
+      MYSQL_ROOT_PASSWORD: student
+      MYSQL_DATABASE: booking_LBS
+    volumes:
+      - ./Docker-Lab5Microservices/booking.sql:/docker-entrypoint-initdb.d/booking.sql
+    ports:
+      - "3307:3306"
+    networks:
+      - hms-net
+
+  room-db:
+    image: mysql:5.7
+    container_name: room-db
+    environment:
+      MYSQL_ROOT_PASSWORD: student
+      MYSQL_DATABASE: room_LBS
+    volumes:
+      - ./Docker-Lab5Microservices/room.sql:/docker-entrypoint-initdb.d/room.sql
+    ports:
+      - "3308:3306"
+    networks:
+      - hms-net
+
+  auth-db:
+    image: mysql:5.7
+    container_name: auth-db
+    environment:
+      MYSQL_ROOT_PASSWORD: student
+      MYSQL_DATABASE: auth_LBS
+    volumes:
+      - ./Docker-Lab5Microservices/auth.sql:/docker-entrypoint-initdb.d/auth.sql
+    ports:
+      - "3309:3306"
+    networks:
+      - hms-net
+
+  frontend-db:
+    image: mysql:5.7
+    container_name: frontend-db
+    environment:
+      MYSQL_ROOT_PASSWORD: student
+      MYSQL_DATABASE: frontend_LBS
+    volumes:
+      - ./Docker-Lab5Microservices/frontend.sql:/docker-entrypoint-initdb.d/frontend.sql
+    ports:
+      - "3310:3306"
+    networks:
+      - hms-net
+
+  booking:
+    build:
+      context: .
+      dockerfile: Docker-Lab5Microservices/Dockerfile-booking
+    ports:
+      - "8080:8080"
+    depends_on:
+      - booking-db
+    networks:
+      - hms-net
+
+  room:
+    build:
+      context: .
+      dockerfile: Docker-Lab5Microservices/Dockerfile-room
+    ports:
+      - "8081:8080"
+    depends_on:
+      - room-db
+    networks:
+      - hms-net
+
+  auth:
+    build:
+      context: .
+      dockerfile: Docker-Lab5Microservices/Dockerfile-auth
+    ports:
+      - "8082:8080"
+    depends_on:
+      - auth-db
+    networks:
+      - hms-net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Docker-Lab5Microservices/Dockerfile-frontend
+    ports:
+      - "8083:8080"
+    depends_on:
+      - frontend-db
+    networks:
+      - hms-net
+
+  kubemq:
+    image: kubemq/kubemq
+    container_name: kubemq
+    ports:
+      - "50000:50000"
+      - "9090:9090"
+    networks:
+      - hms-net
+
+networks:
+  hms-net:
+    driver: bridge

@@ -1,0 +1,3 @@
+FROM tomcat:9.0
+COPY authservice.war /usr/local/tomcat/webapps/auth.war
+EXPOSE 8080

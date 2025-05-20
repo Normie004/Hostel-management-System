@@ -1,0 +1,3 @@
+FROM tomcat:9.0
+COPY roomservice.war /usr/local/tomcat/webapps/room.war
+EXPOSE 8080

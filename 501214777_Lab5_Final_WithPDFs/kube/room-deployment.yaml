@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: room-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: room
+  template:
+    metadata:
+      labels:
+        app: room
+    spec:
+      containers:
+      - name: room-container
+        image: yourdockerhub/room:latest
+        ports:
+        - containerPort: 8081

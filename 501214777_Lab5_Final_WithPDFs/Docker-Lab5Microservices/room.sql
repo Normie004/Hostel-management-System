@@ -1,0 +1,2 @@
+-- SQL init for room_LBS
+CREATE DATABASE IF NOT EXISTS room_LBS;
